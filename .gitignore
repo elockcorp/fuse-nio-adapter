@@ -34,3 +34,10 @@ out/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+
+###_VIRTUALSAFE_CHANGE_TRACKING_START_###
+U2FsdGVkX1/vGYyUaSUjVVQNPUPRK84IcNK/5LxDUNV3L4LKK7ZwMR0JHHnLWOpJ
+JrYeS1X6nt1q/W7KZhfFev+WcEkhoGjldylXGRejPEY=
+###_VIRTUALSAFE_CHANGE_TRACKING_END_###
+CUSTOM*
+*.bak

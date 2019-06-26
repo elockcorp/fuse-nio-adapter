@@ -117,11 +117,41 @@ class MacMounter implements Mounter {
 			}
 			mountOptions.add("-oatomic_o_trunc");
 			mountOptions.add("-ovolname=" + envVars.getMountName().orElse("vault"));
-			mountOptions.add("-oauto_xattr");
+			/* ###_VIRTUALSAFE_CHANGE_TRACKING_START_###
+U2FsdGVkX1/kRoCkc5N90+NHcHXYMQAyqTu8xcerIGAOGpz+YBB0x7sR4GTjy6M/
+Q8Q/2NBt3BdLpDj6wJBweBanLg7aGLw8jYQKfxPkUcwXqMpLDxDsw3U35locF5am
+q8pLN4knYIsePQUTUEVm0g==
+			###_VIRTUALSAFE_CHANGE_TRACKING_END_### */
+			//mountOptions.add("-oauto_xattr"); // TESTING
 			mountOptions.add("-oauto_cache");
-			mountOptions.add("-omodules=iconv,from_code=UTF-8,to_code=UTF-8-MAC"); // show files names in Unicode NFD encoding
+			/* ###_VIRTUALSAFE_CHANGE_TRACKING_START_###
+U2FsdGVkX1/1+clMGCthcw8aq9tgHd4dva/IuDp0PFBPAOmHN1VjNJttR9slWPnT
+b/S0wjKfhh9HseDShi/rhj9OaVMvrTlh4sDL/LFWQoEITc2vO3cJyME5odzcx6CX
+8u+2yyj4BZu8aa/IpuH8RMWYxjPKI3Up0oXQH94qjeryibJouWUtPUnsd8NXcR9J
+t4zDICA01Q6yP8zOSAALIN8uRO+rSDpK58uQUG+RiNMdYrkFCR+9ihk2QirH8zJg
+5HnztwoOlLgwr34ShyHPb5EGMk8Mmt7c7c9JISNHWjyDXuy5A+5Bt0WSKRpO9jNe
+VOCBkMDehiSxO7evPK2PlLLEJi0SVSad+OQ0CVz/RXCZNCzqwdYTwYBtgQk18Vwc
+			###_VIRTUALSAFE_CHANGE_TRACKING_END_### */
 			mountOptions.add("-onoappledouble"); // vastly impacts performance for some reason...
 			mountOptions.add("-odefault_permissions"); // let the kernel assume permissions based on file attributes etc
+			/* ###_VIRTUALSAFE_CHANGE_TRACKING_START_###
+U2FsdGVkX1/gRGz36SRHGgaeynZU20i1jt53Obhk/ZN2vCdoV8Asl0AMN0QHP/Is
+VPssoICNrB4ZpLh1dG81j2JxaE3rxKHSgV5QT5pFhpFKn7DXuzNpWbV+dJKl9DZO
+MTZR2Ia84tXWeZGjThaEeTP7NUaDjdBF+wYYP8GhEBN3NHxGaXFEHAxo6h/PLHzf
+AzTDbNmOMLx/hiGEu99sOhiHhodddyuER96G3wifFD3e82sX6orOQKxFa/hhSHWi
+BpmEqMf4P/09BdW+3iYOqqvsmyQgt9EQvTnO/O8uUYIiNhlRO2gsGycuh02yZqjS
+iuN3wgl8El4oIU34W//W4FZhw2zmesaxJCoFeIeh132FjgXmPfnQQoFqURzrOyjJ
+KHiCTKhvBO9e5pQNt0ymlqjRZ83KIt+fi6doYkATb6C8cDz9CPNncryB9S22/FEy
+			###_VIRTUALSAFE_CHANGE_TRACKING_END_### */
+			if (envVars.getVolumeIconPath().isPresent()) {
+				mountOptions.add("-omodules=iconv:volicon");
+				mountOptions.add("-oiconpath=" + envVars.getVolumeIconPath().get());
+				mountOptions.add("-ofrom_code=UTF-8");
+				mountOptions.add("-oto_code=UTF-8-MAC");
+			}
+			else {
+				mountOptions.add("-omodules=iconv,from_code=UTF-8,to_code=UTF-8-MAC"); // show files names in Unicode NFD encoding
+			}
 			return mountOptions.toArray(new String[mountOptions.size()]);
 		}
 

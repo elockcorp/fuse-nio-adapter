@@ -42,14 +42,6 @@
 		</developer>
 	</developers>
 
-	<repositories>
-		<repository>
-			<id>bintray</id>
-			<name>bintray</name>
-			<url>http://jcenter.bintray.com</url>
-		</repository>
-	</repositories>
-
 	<dependencies>
 		<!-- FUSE -->
 		<dependency>
@@ -201,12 +193,6 @@
 
 		<profile>
 			<id>release</id>
-			<distributionManagement>
-				<repository>
-					<id>bintray-jcenter</id>
-					<url>https://api.bintray.com/maven/cryptomator/maven/fuse-nio-adapter/;publish=1</url>
-				</repository>
-			</distributionManagement>
 			<build>
 				<plugins>
 					<plugin>
